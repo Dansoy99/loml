@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy 6th Monthsary, Lovelove Ko! 💕</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--pink:#ffe4ec;--soft:#fff5f8;--rose:#ff8fab;--red:#d9365b;--text:#713d50;--muted:#a15d72;--shadow:0 18px 40px #e0446a26}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:75px}
+body{font-family:Quicksand,system-ui,sans-serif;background:linear-gradient(#fff8f0,#ffe9f1 50%,#fff3f6);color:var(--text);min-height:100vh;overflow-x:hidden}
+body.locked{overflow:hidden}
+button{font:inherit;cursor:pointer}
+.bg-hearts{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.float-heart{position:absolute;bottom:-40px;color:#ff6e9166;animation:floatUp linear infinite}
+@keyframes floatUp{to{transform:translateY(-115vh) rotate(25deg)}}
+@keyframes sway{50%{transform:translateX(12px)}}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.4)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes bob{50%{transform:translateY(-10px)}}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.12)}30%{transform:scale(1)}45%{transform:scale(1.08)}60%{transform:scale(1)}}
+@keyframes pulse{70%{box-shadow:0 0 0 14px #e0446a00}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bounce{50%{transform:translateY(8px)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes pop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes burst{to{transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1.2);opacity:0}}
+.sparkles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.sparkle{position:absolute;color:white;text-shadow:0 0 8px #ffb4c8;animation:twinkle 3s ease-in-out infinite}
+.intro{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;flex-direction:column;padding:24px;text-align:center;background:radial-gradient(circle at 50% 20%,white,#ffe4ec 45%,#ffc9d9);transition:opacity .8s,visibility .8s}
+.intro.hide{opacity:0;visibility:hidden}
+.intro-inner{position:relative;z-index:1;display:flex;align-items:center;flex-direction:column}
+.script{font-family:"Dancing Script",cursive;font-weight:700;color:var(--red)}
+.intro-title{font-size:clamp(2rem,6vw,3.4rem);margin-bottom:36px;animation:fadeUp 1s}
+.envelope{position:relative;width:min(300px,78vw);aspect-ratio:3/2;margin-bottom:40px;cursor:pointer;animation:bob 3s ease-in-out infinite}
+.env-back,.env-front,.env-flap,.env-letter{position:absolute}
+.env-back{inset:0;background:#ffb8cc;border-radius:14px;box-shadow:0 12px 30px #c9304f40}
+.env-letter{left:8%;right:8%;top:12%;bottom:8%;z-index:2;display:grid;place-items:center;background:#fffaf5;border-radius:8px;transition:transform 1s ease .7s}
+.env-letter p{font:1.4rem "Dancing Script",cursive;color:var(--red)}
+.env-front{inset:0;z-index:3;background:linear-gradient(160deg,#ffd0de,#ffb3c8);clip-path:polygon(0 35%,50% 65%,100% 35%,100% 100%,0 100%);border-radius:0 0 14px 14px}
+.env-flap{left:0;right:0;top:0;height:65%;z-index:4;background:linear-gradient(#ff9fb7,#ffc2d4);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:50% 0;transition:transform 1s}
+.envelope.open{animation:none}
+.envelope.open .env-flap{transform:rotateX(180deg);z-index:1}
+.envelope.open .env-letter{transform:translateY(-55%)}
+.seal{position:absolute;left:50%;top:60%;transform:translate(-50%,-50%);width:54px;height:54px;z-index:5;border:0;border-radius:50%;background:linear-gradient(135deg,#ff7d96,#d62f52);color:white;font-size:25px;box-shadow:0 4px 12px #c9304f66;animation:pulse 2s infinite}
+.envelope.open .seal{opacity:0}
+.btn{border:0;border-radius:999px;padding:14px 34px;font-weight:700;color:white;background:linear-gradient(135deg,#ff7fa0,#e04466);box-shadow:0 10px 25px #e0446a59;transition:.2s}
+.btn:hover{transform:translateY(-3px) scale(1.03)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;background:#fff8f5f2;box-shadow:0 4px 20px #e9789626;transform:translateY(-100%);transition:transform .4s}
+.nav.visible{transform:translateY(0)}
+.nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px}
+.nav-logo{font:700 1.6rem "Dancing Script",cursive;color:var(--red);border:0;background:none}
+.nav-links{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav-links button{border:0;background:none;padding:8px 12px;border-radius:999px;font-size:.9rem;font-weight:700;color:var(--muted);white-space:nowrap}
+.nav-links button.active,.nav-links button:hover{background:linear-gradient(135deg,#ff9fb7,#e04466);color:white}
+main{position:relative;z-index:1}
+.section{position:relative;max-width:1100px;margin:auto;padding:90px 20px;text-align:center}
+.section-title{font:700 clamp(2.2rem,6vw,3.6rem) "Dancing Script",cursive;color:var(--red);line-height:1.2}
+.divider{width:70px;height:3px;margin:14px auto 20px;border-radius:4px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+.section-sub{max-width:620px;margin:0 auto 40px;font-size:1.05rem;line-height:1.7;color:var(--muted)}
+.hint{font-size:.95rem;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s,transform .8s;transition-delay:var(--d,0s)}
+.reveal.show{opacity:1;transform:none}
+.hero{min-height:100vh;min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:110px 20px 60px;position:relative;z-index:1}
+.hero-heart{width:56px;height:56px;margin-bottom:16px;animation:beat 1.6s infinite}
+.hero-heart svg,.big-heart svg,.final-heart svg{width:100%;height:100%;filter:drop-shadow(0 6px 12px #e0446a59)}
+.hero-badge{padding:8px 18px;margin-bottom:20px;border-radius:999px;background:#ffffffbf;color:var(--red);font-weight:700;box-shadow:0 6px 16px #e9789626}
+.hero h1{font:700 clamp(2.6rem,9vw,5.6rem)/1.1 "Dancing Script",cursive;color:var(--red);max-width:900px;animation:fadeUp 1.2s}
+.hero-sub{margin-top:18px;font-size:1.1rem;color:var(--muted)}
+.scroll-cue{margin-top:40px;width:50px;height:50px;border:0;border-radius:50%;background:white;color:var(--red);font-size:1.3rem;box-shadow:0 8px 20px #e9789640;animation:bounce 2s infinite}
+.counter-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:24px;max-width:780px;margin:auto}
+.card{position:relative;background:#ffffffe0;border-radius:28px;border:1px solid white;box-shadow:var(--shadow);padding:36px 20px}
+.ring-wrap:before{content:"";position:absolute;inset:12px;border:2px dashed #ffb3c8;border-radius:50%;animation:spin 18s linear infinite;pointer-events:none}
+.counter-num{font:700 clamp(4.2rem,12vw,6.5rem)/1 "Dancing Script",cursive;color:var(--red)}
+.counter-label{margin-top:10px;font-size:.85rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+.months-track{display:flex;justify-content:center;gap:6px;margin-top:18px}
+.month-dot{font-size:1.6rem;color:#ffd0de}.month-dot.on{color:var(--red);transform:scale(1.2);animation:beat 1.6s infinite}
+.letter-card{position:relative;max-width:780px;margin:auto;padding:clamp(28px,6vw,56px);text-align:left;cursor:pointer;border-radius:26px;background-color:#fffdfb;background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 31px,#ff8fab24 32px);box-shadow:var(--shadow);border:1px solid #ffe4ec}
+.letter-stamp{position:absolute;top:18px;right:18px;width:46px;height:46px;display:grid;place-items:center;border-radius:6px;border:2px dashed var(--rose);transform:rotate(8deg);font-size:1.3rem}
+.letter-body p{font-size:clamp(1rem,2.6vw,1.1rem);line-height:1.9;color:var(--text);margin-bottom:1.2em;overflow-wrap:break-word}
+.letter-body p:last-child{margin-bottom:0}
+.letter-hint{margin-top:22px;text-align:center;font-size:.9rem;color:var(--muted)}
+.cursor{display:inline-block;width:2px;height:1.1em;margin-left:2px;vertical-align:text-bottom;background:var(--red);animation:blink 1s steps(2) infinite}
+.promise-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.promise-card{position:relative;height:100%;padding:34px 24px;border-radius:26px;background:white;box-shadow:0 12px 30px #e0446a1f;border:1px solid var(--pink);transition:.4s}
+.promise-card:hover{transform:translateY(-8px) rotate(-.5deg);box-shadow:0 22px 40px #e0446a38}
+.promise-num{position:absolute;top:12px;right:18px;font:700 2rem "Dancing Script",cursive;color:#ffb3c8}
+.promise-icon{width:74px;height:74px;margin:0 auto 16px;display:grid;place-items:center;font-size:2.2rem;border-radius:50%;background:linear-gradient(135deg,#ffe0ea,#fff3f6);animation:bob 3s infinite}
+.promise-text{font-size:1.08rem;font-weight:700;line-height:1.6}
+.memory-video-wrap{max-width:460px;margin:0 auto;padding:12px;border:1px solid white;border-radius:28px;background:#ffffffe0;box-shadow:var(--shadow)}
+.memory-video{display:block;width:auto;max-width:100%;height:min(75vh,640px);aspect-ratio:9/16;object-fit:contain;margin:0 auto;background:#2b1720;border-radius:20px}
+.memory-caption{margin:14px 8px 4px;color:var(--muted);font-weight:700;line-height:1.6}
+.surprise-wrap{display:flex;flex-direction:column;align-items:center;gap:26px}
+.big-heart{position:relative;width:min(240px,60vw);aspect-ratio:1;border:0;background:none;animation:beat 1.8s infinite}
+.big-heart:active{transform:scale(.92)}
+.burst{position:absolute;left:50%;top:50%;font-size:1.4rem;color:var(--red);pointer-events:none;animation:burst 1.2s ease-out forwards}
+.surprise-msg{max-width:620px;padding:30px 28px;border-radius:28px;background:white;box-shadow:var(--shadow);font:700 clamp(1.8rem,5vw,2.6rem)/1.35 "Dancing Script",cursive;color:var(--red);opacity:0;transform:scale(.85);transition:.7s}
+.surprise-msg.show{opacity:1;transform:scale(1)}
+.forever{min-height:90vh;display:flex;align-items:center;justify-content:center}
+.final-heart{position:relative;width:clamp(150px,28vw,240px);aspect-ratio:1;margin:0 auto 30px;animation:beat 1.8s infinite}
+.forever-msg{max-width:640px;margin:auto;font-size:clamp(1.1rem,3vw,1.35rem);line-height:1.8}
+.forever-love{margin-top:24px;font:700 clamp(2.2rem,7vw,4rem)/1.2 "Dancing Script",cursive;color:var(--red)}
+footer{position:relative;z-index:1;text-align:center;padding:40px 20px 120px;font-size:.95rem;color:var(--muted)}
+.fab{position:fixed;bottom:20px;z-index:60;width:52px;height:52px;display:grid;place-items:center;border:0;border-radius:50%;background:white;color:var(--red);font-size:1.3rem;box-shadow:0 10px 25px #e0446a40;transition:.25s}
+.fab-left{left:20px}.fab-right{right:20px;opacity:0;transform:translateY(20px);pointer-events:none}.fab-right.show{opacity:1;transform:none;pointer-events:auto}
+.fab.playing .music-icon{animation:bob 2.4s infinite}
+@media(max-width:700px){.nav-logo{display:none}.nav-inner{justify-content:center;padding:10px 8px}.nav-links{width:100%;justify-content:flex-start}.section{padding:70px 16px}.fab{width:46px;height:46px;bottom:14px}.fab-left{left:14px}.fab-right{right:14px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body class="locked">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff9fb7"/><stop offset="100%" stop-color="#d62f52"/></linearGradient></defs></svg>
+<div class="bg-hearts" id="bgHearts" aria-hidden="true"></div>
+
+<div class="intro" id="intro">
+  <div class="sparkles" id="introSparkles"></div>
+  <div class="intro-inner">
+    <h1 class="intro-title script">Happy 6th Monthsary, Lovelove Ko!</h1>
+    <div class="envelope" id="envelope">
+      <div class="env-back"></div><div class="env-letter"><p>for you, lovelove ko 💕</p></div>
+      <div class="env-front"></div><div class="env-flap"></div><button class="seal" id="seal" aria-label="Open envelope">♥</button>
+    </div>
+    <button class="btn" id="openBtn">Open My Surprise</button>
+  </div>
+</div>
+
+<header class="nav" id="nav"><div class="nav-inner">
+  <button class="nav-logo" id="navLogo">Sheya 💗</button>
+  <nav class="nav-links" aria-label="Sections">
+    <button data-target="home">Home</button><button data-target="story">Our Story</button><button data-target="letter">Letter</button><button data-target="promises">Promises</button><button data-target="memories">Memories</button><button data-target="surprise">Surprise</button><button data-target="forever">Forever</button>
+  </nav>
+</div></header>
+
+<main>
+<section class="hero" id="home">
+  <div class="sparkles" id="heroSparkles"></div>
+  <div class="hero-heart"><svg viewBox="0 0 24 24"><path fill="url(#heartGrad)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+  <span class="hero-badge">6 months of us 💕</span><h1>Happy 6th Monthsary, Lovelove Ko!</h1><p class="hero-sub">For my favorite person, Sheya</p><button class="scroll-cue" data-scroll="story" aria-label="Scroll down">↓</button>
+</section>
+
+<section class="section" id="story">
+  <h2 class="section-title reveal">Our Little Love Story</h2><div class="divider reveal"></div>
+  <p class="section-sub reveal">Half a year of choosing, understanding, trusting, and loving each other.</p>
+  <div class="counter-grid">
+    <div class="card ring-wrap reveal"><div class="counter-num" id="monthCount">0</div><div class="counter-label">Months Together</div><div class="months-track"><span class="month-dot">♥</span><span class="month-dot">♥</span><span class="month-dot">♥</span><span class="month-dot">♥</span><span class="month-dot">♥</span><span class="month-dot">♥</span></div></div>
+    <div class="card reveal" style="--d:.2s"><div class="counter-num" id="dayCount">0</div><div class="counter-label">Days of Us</div></div>
+  </div>
+</section>
+
+<section class="section" id="letter">
+  <h2 class="section-title reveal">A Letter for You</h2><div class="divider reveal"></div>
+  <div class="letter-card reveal" id="letterCard" role="button" tabindex="0" aria-label="Click to show the full letter"><div class="letter-stamp">💌</div><div class="letter-body" id="letterBody"></div></div>
+  <p class="letter-hint reveal">tap the letter to read it all at once 💌</p>
+</section>
+
+<section class="section" id="promises">
+  <h2 class="section-title reveal">Little Promises</h2><div class="divider reveal"></div><p class="section-sub reveal">Small things I promise to keep, always.</p>
+  <div class="promise-grid">
+    <article class="promise-card reveal"><span class="promise-num">01</span><div class="promise-icon">💗</div><p class="promise-text">I will always choose you.</p></article>
+    <article class="promise-card reveal" style="--d:.1s"><span class="promise-num">02</span><div class="promise-icon">🌷</div><p class="promise-text">I will always try to understand you.</p></article>
+    <article class="promise-card reveal" style="--d:.2s"><span class="promise-num">03</span><div class="promise-icon">🤗</div><p class="promise-text">You will always have someone to run to.</p></article>
+    <article class="promise-card reveal" style="--d:.3s"><span class="promise-num">04</span><div class="promise-icon">👂</div><p class="promise-text">I'll listen to your problems without judgment.</p></article>
+    <article class="promise-card reveal" style="--d:.4s"><span class="promise-num">05</span><div class="promise-icon">🫶</div><p class="promise-text">I'll do my best to make you feel safe, appreciated, and loved.</p></article>
+  </div>
+</section>
+
+<section class="section" id="memories">
+  <h2 class="section-title reveal">Our Memories</h2><div class="divider reveal"></div><p class="section-sub reveal">A little video filled with memories of us 🎥</p><div class="memory-video-wrap reveal"><video class="memory-video" controls playsinline preload="metadata"><source src="memories.mp4" type="video/mp4">Your browser does not support the video element.</video><p class="memory-caption">Our favorite moments together 💗</p></div>
+</section>
+
+<section class="section" id="surprise">
+  <h2 class="section-title reveal">A Little Surprise</h2><div class="divider reveal"></div>
+  <div class="surprise-wrap reveal"><button class="big-heart" id="surpriseHeart" aria-label="Reveal surprise"><svg viewBox="0 0 24 24"><path fill="url(#heartGrad)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></button><p class="hint" id="surpriseHint">tap the heart 💗</p><div class="surprise-msg" id="surpriseMsg" aria-live="polite">No matter how many months or years pass, I will always choose you, Sheya.</div></div>
+</section>
+
+<section class="section forever" id="forever"><div class="sparkles" id="foreverSparkles"></div><div class="forever-inner reveal">
+  <div class="final-heart"><svg viewBox="0 0 24 24"><path fill="url(#heartGrad)" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></div>
+  <p class="forever-msg">Here's to more months and years of loving each other, growing together, and making more memories.</p><p class="forever-love">I love you so so much, lovelove kooooo!</p>
+</div></section>
+</main>
+<footer>Made with all my love for Sheya · 6 months &amp; counting 💕</footer>
+
+<button class="fab fab-left" id="musicToggle" aria-pressed="false" title="Play music"><span class="music-icon">🎵</span></button>
+<button class="fab fab-right" id="backTop" aria-label="Back to top" title="Back to top">↑</button>
+
+
+
+<script>
+"use strict";
+
+/* CUSTOMIZE: set your actual relationship start date and add your photos below. */
+const CONFIG = {
+  startDate: "2026-05-12",
+  video: "memories.mp4"
+};
+
+const LETTER_PARAGRAPHS = [
+"happy happy monthsary lovelove kooooo! babatiin sana kita kanina tas paglingon ko eh sleepwell ka na pala. ninonominate ko po ng 2 points si sheya dahil hindi siya nag-goodnight, iloveyou, tsaka kiss sa akin. anw, i really am grateful to have you as my partner, lovelove ko. i'm really happy na despite all the problems and misunderstandings na dumadating sa relationship natin, we always find a way to fix things. we choose to understand each other, love each other, and stay together po.",
+"HALF A YEAR NA US, LOVELOVE KOOOO! half lang pero at least may year na sa rs natin, diba dibaaa? HAHAHAHA. but seriously, i'm happy na we've managed to keep our relationship healthy and strong without letting problems turn into something that could break the trust we've built for each other. i really am thankful to God kasi every time na may problems tayo, especially when I start overthinking things, i can always turn to Him through prayer. somehow, it makes everything feel lighter, and hearing your side of things and the reassurance you give me helps me feel at ease po.",
+"may we continue to choose each other every day, trust each other, understand each other, and never get tired of loving one another. i hope we never hesitate to communicate and work things out whenever something comes between us. and lovelove ko, don't ever hesitate to open up to me whenever you're having problems, not just about our relationship but also about your own personal struggles. you don't always have to figure things out on your own po. i'm always here to listen and understand you, okay?",
+"i may not have everything to offer, lovelove ko, but i'll always try my best to make you feel safe, appreciated, understood, and loved. i want to be someone you can always run to, someone you can be comfortable with, and someone who will choose to stay even on the difficult days.",
+"thank you for choosing me and for staying with me, babiii. here's to more months and years of loving each other, growing together, and making more memories. i love you so so much, lovelove kooooo!"
+];
+
+const $ = s => document.querySelector(s);
+const $$ = s => document.querySelectorAll(s);
+
+function createFloatingHearts(){
+  const container=$("#bgHearts"),count=matchMedia("(max-width:600px)").matches?10:20;
+  for(let i=0;i<count;i++){
+    const heart=document.createElement("div"),inner=document.createElement("span");
+    heart.className="float-heart";inner.textContent=Math.random()>.5?"♥":"♡";
+    inner.style.animation="sway 4s ease-in-out infinite";heart.appendChild(inner);
+    heart.style.left=Math.random()*100+"%";heart.style.fontSize=12+Math.random()*22+"px";
+    heart.style.animationDuration=12+Math.random()*14+"s";heart.style.animationDelay=-Math.random()*20+"s";
+    container.appendChild(heart);
+  }
+}
+function addSparkles(container,count){
+  if(!container)return;
+  for(let i=0;i<count;i++){
+    const s=document.createElement("span");s.className="sparkle";s.textContent="✦";
+    s.style.left=Math.random()*100+"%";s.style.top=Math.random()*100+"%";
+    s.style.fontSize=10+Math.random()*16+"px";s.style.animationDelay=Math.random()*3+"s";
+    s.style.animationDuration=2.5+Math.random()*2+"s";container.appendChild(s);
+  }
+}
+
+/* Envelope opening */
+let isOpened=false;
+function openEnvelope(){
+  if(isOpened)return;isOpened=true;
+  $("#envelope").classList.add("open");$("#openBtn").disabled=true;
+  startMusic();
+  setTimeout(()=>$("#intro").classList.add("hide"),1600);
+  setTimeout(()=>{$("#intro").style.display="none";document.body.classList.remove("locked");onScroll();},2400);
+}
+$("#openBtn").addEventListener("click",openEnvelope);
+$("#envelope").addEventListener("click",openEnvelope);
+$("#seal").addEventListener("click",e=>{e.stopPropagation();openEnvelope();});
+
+/* Original soft instrumental made with Web Audio API */
+const CHORDS=[[261.63,329.63,392,493.88],[220,261.63,329.63,392],[174.61,220,261.63,329.63],[196,246.94,293.66,392]];
+const NOTE_SCALE=[523.25,587.33,659.25,783.99,880,1046.5];
+let audioCtx=null,masterGain=null,musicTimer=null,musicOn=false,nextChordTime=0,nextNoteTime=0,chordIndex=0,noteIndex=2;
+function ensureAudio(){
+  if(audioCtx)return true;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return false;
+  audioCtx=new AC();masterGain=audioCtx.createGain();masterGain.gain.value=0;masterGain.connect(audioCtx.destination);return true;
+}
+function playTone(freq,time,duration,type,peak){
+  const osc=audioCtx.createOscillator(),gain=audioCtx.createGain();osc.type=type;osc.frequency.value=freq;
+  gain.gain.setValueAtTime(.0001,time);gain.gain.exponentialRampToValueAtTime(peak,time+Math.min(.6,duration*.4));
+  gain.gain.exponentialRampToValueAtTime(.0001,time+duration);osc.connect(gain);gain.connect(masterGain);osc.start(time);osc.stop(time+duration+.05);
+}
+function scheduleMusic(){
+  const horizon=audioCtx.currentTime+.8;
+  while(nextChordTime<horizon){CHORDS[chordIndex%CHORDS.length].forEach(f=>playTone(f,nextChordTime,3.6,"sine",.05));chordIndex++;nextChordTime+=3.6;}
+  while(nextNoteTime<horizon){if(Math.random()<.75){noteIndex=Math.max(0,Math.min(NOTE_SCALE.length-1,noteIndex+(Math.random()<.5?-1:1)));playTone(NOTE_SCALE[noteIndex],nextNoteTime,1.4,"triangle",.035);}nextNoteTime+=.7;}
+}
+function updateMusicButton(){
+  const b=$("#musicToggle");b.setAttribute("aria-pressed",String(musicOn));b.classList.toggle("playing",musicOn);b.title=musicOn?"Pause music":"Play music";
+}
+function startMusic(){
+  if(!ensureAudio())return;if(audioCtx.state==="suspended")audioCtx.resume();
+  const now=audioCtx.currentTime;masterGain.gain.cancelScheduledValues(now);masterGain.gain.setValueAtTime(masterGain.gain.value,now);masterGain.gain.linearRampToValueAtTime(.6,now+2);
+  nextChordTime=now+.1;nextNoteTime=now+.2;clearInterval(musicTimer);scheduleMusic();musicTimer=setInterval(scheduleMusic,150);musicOn=true;updateMusicButton();
+}
+function stopMusic(){
+  if(!audioCtx)return;const now=audioCtx.currentTime;masterGain.gain.cancelScheduledValues(now);masterGain.gain.setValueAtTime(masterGain.gain.value,now);masterGain.gain.linearRampToValueAtTime(0,now+.4);
+  clearInterval(musicTimer);musicOn=false;updateMusicButton();
+}
+$("#musicToggle").addEventListener("click",()=>musicOn?stopMusic():startMusic());
+
+/* Counters */
+function animateNumber(el,target,duration,onFrame){
+  const start=performance.now();function frame(now){
+    const p=Math.min(1,(now-start)/duration),value=Math.round(target*(1-Math.pow(1-p,3)));el.textContent=value;if(onFrame)onFrame(value);
+    if(p<1)requestAnimationFrame(frame);else{el.classList.add("counter-pop");setTimeout(()=>el.classList.remove("counter-pop"),400);}
+  }requestAnimationFrame(frame);
+}
+function startCounters(){
+  animateNumber($("#monthCount"),6,1600,v=>$$(".month-dot").forEach((d,i)=>d.classList.toggle("on",i<v)));
+  const start=new Date(CONFIG.startDate+"T00:00:00");let days=Math.floor((Date.now()-start.getTime())/86400000);if(!Number.isFinite(days)||days<0)days=0;
+  animateNumber($("#dayCount"),days,2200);
+}
+
+/* Letter typing */
+let letterStarted=false,letterTimer=null,letterFinish=null;
+function typeLetter(){
+  const body=$("#letterBody");body.innerHTML="";
+  const paragraphs=LETTER_PARAGRAPHS.map(text=>{const p=document.createElement("p");body.appendChild(p);return{el:p,text};});
+  const cursor=document.createElement("span");cursor.className="cursor";let pi=0,ci=0;
+  function tick(){
+    if(pi>=paragraphs.length){cursor.remove();letterTimer=null;return;}
+    const current=paragraphs[pi];ci=Math.min(ci+4,current.text.length);current.el.textContent=current.text.slice(0,ci);current.el.appendChild(cursor);
+    if(ci>=current.text.length){pi++;ci=0;}letterTimer=setTimeout(tick,20);
+  }
+  letterFinish=()=>{clearTimeout(letterTimer);paragraphs.forEach(x=>x.el.textContent=x.text);cursor.remove();letterTimer=null;pi=paragraphs.length;};
+  tick();
+}
+function finishLetter(){if(letterFinish){letterFinish();letterFinish=null;}}
+$("#letterCard").addEventListener("click",()=>{if(letterStarted)finishLetter();});
+$("#letterCard").addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){e.preventDefault();finishLetter();}});
+
+/* Surprise heart */
+function burstHearts(container){
+  const symbols=["♥","💗","💖","🌸"];for(let i=0;i<14;i++){
+    const s=document.createElement("span");s.className="burst";s.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    const a=2*Math.PI*i/14+Math.random()*.3,d=90+Math.random()*70;s.style.setProperty("--x",Math.cos(a)*d+"px");s.style.setProperty("--y",Math.sin(a)*d+"px");
+    container.appendChild(s);setTimeout(()=>s.remove(),1300);
+  }
+}
+$("#surpriseHeart").addEventListener("click",()=>{burstHearts($("#surpriseHeart"));$("#surpriseMsg").classList.add("show");$("#surpriseHint").textContent="tap the heart again for more hearts 💕";});
+
+/* Navigation and scrolling */
+function scrollToSection(id){const target=document.getElementById(id);if(target)target.scrollIntoView({behavior:"smooth",block:"start"});}
+$$(".nav-links button").forEach(b=>b.addEventListener("click",()=>scrollToSection(b.dataset.target)));
+$$("[data-scroll]").forEach(b=>b.addEventListener("click",()=>scrollToSection(b.dataset.scroll)));
+$("#navLogo").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+$("#backTop").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+function onScroll(){const y=window.scrollY;$("#nav").classList.toggle("visible",y>window.innerHeight*.5);$("#backTop").classList.toggle("show",y>500);}
+window.addEventListener("scroll",onScroll,{passive:true});
+
+/* Reveal elements and start counters/letter when their sections appear */
+const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("show");revealObserver.unobserve(e.target);}}),{threshold:.15});
+const letterObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting&&!letterStarted){letterStarted=true;typeLetter();letterObserver.disconnect();}}),{threshold:.35});
+const storyObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){startCounters();storyObserver.disconnect();}}),{threshold:.4});
+
+function init(){
+  if("scrollRestoration" in history)history.scrollRestoration="manual";window.scrollTo(0,0);
+  createFloatingHearts();addSparkles($("#heroSparkles"),14);addSparkles($("#introSparkles"),10);addSparkles($("#foreverSparkles"),12);
+  $$(".reveal").forEach(el=>revealObserver.observe(el));letterObserver.observe($("#letter"));storyObserver.observe($("#story"));updateMusicButton();onScroll();
+}
+init();
+</script>
+</body>
+</html>
